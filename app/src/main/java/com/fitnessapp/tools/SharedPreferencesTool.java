@@ -11,7 +11,6 @@ import android.content.SharedPreferences;
 public class SharedPreferencesTool {
 
 
-
     static public void setSharedPreferences(Activity activity, String key, String value){
         SharedPreferences sharedPreferences = activity.getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
     }
