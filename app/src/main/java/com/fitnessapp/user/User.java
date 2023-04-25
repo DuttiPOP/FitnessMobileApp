@@ -16,8 +16,9 @@ public class User implements Parcelable {
     private double weight;
     private double height;
     private int experience;
+    private boolean guest;
 
-    public User(String firstName, String lastName, String email, int age, String gender, double weight, double height, int experience) {
+    public User(String firstName, String lastName, String email, int age, String gender, double weight, double height, int experience, boolean guest) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -26,6 +27,7 @@ public class User implements Parcelable {
         this.weight = weight;
         this.height = height;
         this.experience = experience;
+        this.guest = guest;
     }
 
     public User(){
@@ -37,6 +39,7 @@ public class User implements Parcelable {
         this.weight = 0;
         this.height = 0;
         this.experience = 0;
+        this.guest = true;
     }
 
 
@@ -49,6 +52,7 @@ public class User implements Parcelable {
         weight = in.readDouble();
         height = in.readDouble();
         experience = in.readInt();
+        guest = in.readInt() == 1;
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -119,6 +123,18 @@ public class User implements Parcelable {
         this.height = height;
     }
 
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public boolean isGuest() { return guest; }
+
+    public void setGuest(boolean guest) { this.guest = guest; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -134,13 +150,7 @@ public class User implements Parcelable {
         dest.writeDouble(weight);
         dest.writeDouble(height);
         dest.writeInt(experience);
+        dest.writeInt(guest ? 1 : 0);
     }
 
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
 }
