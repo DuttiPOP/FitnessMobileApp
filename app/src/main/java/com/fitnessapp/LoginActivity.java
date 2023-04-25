@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.fitnessapp.tools.DatabaseHelper;
-import com.fitnessapp.tools.DefaultData;
 import com.fitnessapp.tools.SharedPreferencesHelper;
 import com.fitnessapp.user.User;
 

@@ -6,8 +6,6 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
-
 public class User implements Parcelable {
 
     private String firstName;
@@ -17,8 +15,9 @@ public class User implements Parcelable {
     private String gender;
     private double weight;
     private double height;
+    private int experience;
 
-    public User(String firstName, String lastName, String email, int age, String gender, double weight, double height) {
+    public User(String firstName, String lastName, String email, int age, String gender, double weight, double height, int experience) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -26,6 +25,7 @@ public class User implements Parcelable {
         this.gender = gender;
         this.weight = weight;
         this.height = height;
+        this.experience = experience;
     }
 
     public User(){
@@ -36,6 +36,7 @@ public class User implements Parcelable {
         this.gender = null;
         this.weight = 0;
         this.height = 0;
+        this.experience = 0;
     }
 
 
@@ -47,6 +48,7 @@ public class User implements Parcelable {
         gender = in.readString();
         weight = in.readDouble();
         height = in.readDouble();
+        experience = in.readInt();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -131,5 +133,14 @@ public class User implements Parcelable {
         dest.writeString(gender);
         dest.writeDouble(weight);
         dest.writeDouble(height);
+        dest.writeInt(experience);
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
     }
 }

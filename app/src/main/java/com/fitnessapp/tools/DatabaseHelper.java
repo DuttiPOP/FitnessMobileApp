@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "GymBuddy.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String TABLE_USERS = "users";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_FIRSTNAME = "firstName";
@@ -24,6 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String COLUMN_GENDER = "gender";
     private static final String COLUMN_WEIGHT = "weight";
     private static final String COLUMN_HEIGHT = "height";
+    private static final String COLUMN_EXPERIENCE = "experience";
 
 
 
@@ -41,7 +42,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                 + COLUMN_AGE + " INTEGER,"
                 + COLUMN_GENDER + " TEXT,"
                 + COLUMN_WEIGHT + " REAL,"
-                + COLUMN_HEIGHT + " REAL"
+                + COLUMN_HEIGHT + " REAL,"
+                + COLUMN_EXPERIENCE + " INTEGER"
                 + ")";
         db.execSQL(CREATE_USERS_TABLE);
     }
@@ -61,6 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         values.put(COLUMN_FIRSTNAME, user.getGender());
         values.put(COLUMN_WEIGHT, user.getWeight());
         values.put(COLUMN_HEIGHT, user.getHeight());
+        values.put(COLUMN_EXPERIENCE, user.getExperience());
         return (int) this.getWritableDatabase().insert(TABLE_USERS, null, values);
 
     }
@@ -77,6 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             user.setGender(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)));
             user.setWeight(cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_WEIGHT)));
             user.setHeight(cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_HEIGHT)));
+            user.setExperience(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_EXPERIENCE)));
             db.close();
             cursor.close();
         }
