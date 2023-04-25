@@ -1,7 +1,10 @@
 package com.fitnessapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -12,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.fitnessapp.tools.DatabaseHelper;
+import com.fitnessapp.tools.SharedPreferencesHelper;
 import com.fitnessapp.user.User;
 
 import java.lang.annotation.Target;
@@ -42,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
         btnViewWorkoutLog = findViewById(R.id.btn_view_workout_log);
         btnLogout = findViewById(R.id.btn_logout);
 
-        tvUsername.setText("Привет, " + user.getFirstName() + "!");
+        tvUsername.setText(String.format("Привет, %s!", user.getFirstName()));
 
         btnViewWorkoutPlan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,13 +63,26 @@ public class ProfileActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.clear();
-                editor.apply();
-                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage("Вы действительно хотите выйти из аккаунта?")
+                        .setCancelable(false)
+                        .setPositiveButton("Выход", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                SharedPreferencesHelper.setLogged((Activity) view.getContext(), false);
+                                SharedPreferencesHelper.setId((Activity) view.getContext(), -1);
+                                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+
             }
         });
     }
