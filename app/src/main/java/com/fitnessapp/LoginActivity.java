@@ -3,9 +3,7 @@ package com.fitnessapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -32,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-        etEmail = findViewById(R.id.et_email);
-        etPassword = findViewById(R.id.et_password);
+        etEmail = findViewById(R.id.editEmailAddress);
+        etPassword = findViewById(R.id.editPassword);
         loginButton = findViewById(R.id.loginButton);
         registrationButton = findViewById(R.id.registrationButton);
         asGuestButton = findViewById(R.id.asGuestButton);
@@ -55,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 String emailString = etEmail.getText().toString();
                 String passwordString = etPassword.getText().toString();
-
 
 
                 /*
