@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,6 +19,9 @@ import com.fitnessapp.tools.SharedPreferencesHelper;
 import com.fitnessapp.user.User;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    Context context = this;
+
     TextView tvUsername;
     Button toWorkoutPlanButton, toWorkoutLogButton, logoutButton, toPersonalDataButton;
 
@@ -61,7 +65,8 @@ public class ProfileActivity extends AppCompatActivity {
         toPersonalDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(context, PersonalDataActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -75,7 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 SharedPreferencesHelper.setLogged((Activity) view.getContext(), false);
                                 SharedPreferencesHelper.setId((Activity) view.getContext(), -1);
-                                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                                Intent intent = new Intent(context, LoginActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
