@@ -4,4 +4,24 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
 
+    <string name="email">E-mail</string>
+    <string name="password">Пароль</string>
+    <string name="age">Возраст</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="gender">Пол</string>
+    <string name="height">Рост</string>
+    <string name="weight">Вес</string>
+    <string name="experience">Опыт</string>
+    <string name="personal_data_section">Персональные данные</string>
+    <string name="change_personal_data">Изменить данные</string>
+
+
+
+    <string name="change_password">Изменить пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="confirm_new_password">Подтвердите пароль</string>
+
+
+
 </resources>
