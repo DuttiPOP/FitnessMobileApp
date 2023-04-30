@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -18,11 +17,9 @@ import com.fitnessapp.tools.DatabaseHelper;
 import com.fitnessapp.tools.SharedPreferencesHelper;
 import com.fitnessapp.user.User;
 
-import java.lang.annotation.Target;
-
 public class ProfileActivity extends AppCompatActivity {
     TextView tvUsername;
-    Button btnViewWorkoutPlan, btnViewWorkoutLog, btnLogout;
+    Button toWorkoutPlanButton, toWorkoutLogButton, logoutButton, toPersonalDataButton;
 
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
@@ -42,25 +39,33 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         tvUsername = findViewById(R.id.tv_username);
-        btnViewWorkoutPlan = findViewById(R.id.btn_view_workout_plan);
-        btnViewWorkoutLog = findViewById(R.id.btn_view_workout_log);
-        btnLogout = findViewById(R.id.btn_logout);
+        toPersonalDataButton = findViewById(R.id.toPersonalDataButton);
+        toWorkoutPlanButton = findViewById(R.id.toWorkoutPlanButton);
+        toWorkoutLogButton = findViewById(R.id.toWorkoutLogButton);
+        logoutButton = findViewById(R.id.logoutButton);
 
         tvUsername.setText(String.format("Привет, %s!", user.getFirstName()));
 
-        btnViewWorkoutPlan.setOnClickListener(new View.OnClickListener() {
+        toWorkoutPlanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             }
         });
 
-        btnViewWorkoutLog.setOnClickListener(new View.OnClickListener() {
+        toWorkoutLogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             }
         });
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
+        toPersonalDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
