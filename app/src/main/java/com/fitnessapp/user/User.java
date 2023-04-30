@@ -30,15 +30,16 @@ public class User implements Parcelable {
         this.guest = guest;
     }
 
+
+    public User(String firstName, String lastName, String email){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.guest = false;
+    }
+
     public User(){
         this.firstName = "Гость";
-        this.lastName = null;
-        this.email = null;
-        this.age = 0;
-        this.gender = null;
-        this.weight = 0;
-        this.height = 0;
-        this.experience = 0;
         this.guest = true;
     }
 
