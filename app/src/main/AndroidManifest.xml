@@ -12,6 +12,10 @@
         android:theme="@style/Theme.FitnessMobileApp"
         tools:targetApi="31">
         <activity
+            android:name=".PersonalDataActivity"
+            android:theme="@style/Theme.FitnessMobileApp"
+            android:exported="false" />
+        <activity
             android:name=".GoalsActivity"
             android:theme="@style/Theme.FitnessMobileApp" />
         <activity
