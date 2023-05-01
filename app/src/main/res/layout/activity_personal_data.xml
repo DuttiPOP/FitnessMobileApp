@@ -23,7 +23,7 @@
 
     <include
         android:id="@+id/include3"
-        layout="@layout/content_pesonal_data_change_password"
+        layout="@layout/fragment_personal_data_change_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
