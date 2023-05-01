@@ -10,14 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class PersonalDataActivity extends AppCompatActivity {
 
     Context context = this;
 
-    EditText edFirstName, edLastName, edEmail, edGender, edHeight, edWeight, edExperience;
+    TextInputEditText edFirstName, edLastName, edEmail, edGender, edHeight, edWeight, edExperience, edAge;
     Button btChangeAndSave;
 
-    EditText edPassword, edNewPassword, edConfirmNewPassword;
+    TextInputEditText edPassword, edNewPassword, edConfirmNewPassword;
     Button btChangePassword;
 
     @Override
@@ -25,13 +27,14 @@ public class PersonalDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_data);
 
-        edFirstName = findViewById(R.id.editFirstName);
+        edFirstName = findViewById(R.id.edFirstName);
         edLastName = findViewById(R.id.edLastName);
         edEmail = findViewById(R.id.edEmail);
         edGender = findViewById(R.id.edGender);
         edHeight = findViewById(R.id.edHeight);
         edWeight = findViewById(R.id.edWeight);
         edExperience = findViewById(R.id.edExperience);
+        edAge = findViewById(R.id.edAge);
         btChangeAndSave = findViewById(R.id.btChangeAndSave);
 
         edPassword = findViewById(R.id.edPassword);
