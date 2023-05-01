@@ -9,16 +9,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.fitnessapp.tools.DatabaseHelper;
 import com.fitnessapp.tools.SharedPreferencesHelper;
 import com.fitnessapp.user.User;
+import com.google.android.material.textfield.TextInputEditText;
 
 
 public class LoginActivity extends AppCompatActivity {
-    EditText etEmail, etPassword;
+    TextInputEditText fieldEmail, fieldPassword;
+
     Button loginButton, registrationButton, asGuestButton;
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
@@ -30,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-        etEmail = findViewById(R.id.editEmailAddress);
-        etPassword = findViewById(R.id.editPassword);
+        fieldEmail = findViewById(R.id.editEmailAddress);
+        fieldPassword = findViewById(R.id.editPassword);
         loginButton = findViewById(R.id.loginButton);
         registrationButton = findViewById(R.id.registrationButton);
         asGuestButton = findViewById(R.id.asGuestButton);
@@ -51,8 +52,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String emailString = etEmail.getText().toString();
-                String passwordString = etPassword.getText().toString();
+                String emailString = fieldEmail.getText().toString();
+                String passwordString = fieldPassword.getText().toString();
 
 
                 /*
