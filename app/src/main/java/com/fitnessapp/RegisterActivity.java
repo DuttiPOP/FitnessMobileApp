@@ -16,9 +16,10 @@ import android.widget.Toast;
 import com.fitnessapp.tools.DatabaseHelper;
 import com.fitnessapp.tools.SharedPreferencesHelper;
 import com.fitnessapp.user.User;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText editEmailAddress, editPassword, editFirstName, editLastName;
+    TextInputEditText editEmailAddress, editPassword, editFirstName, editLastName;
     Button btnRegister;
     DatabaseHelper databaseHelper;
 
@@ -27,10 +28,10 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        editEmailAddress = findViewById(R.id.editEmailAddress);
-        editPassword = findViewById(R.id.editPassword);
-        editFirstName = findViewById(R.id.editFirstName);
-        editLastName = findViewById(R.id.editLastName);
+        editEmailAddress = findViewById(R.id.fieldEmail);
+        editPassword = findViewById(R.id.fieldPassword);
+        editFirstName = findViewById(R.id.fieldFirstName);
+        editLastName = findViewById(R.id.fieldLastName);
         btnRegister = findViewById(R.id.btn_register);
 
         databaseHelper = new DatabaseHelper(this);
