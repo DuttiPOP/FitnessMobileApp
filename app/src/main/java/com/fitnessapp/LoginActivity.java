@@ -3,6 +3,7 @@ package com.fitnessapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,12 +13,15 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.fitnessapp.tools.DatabaseHelper;
+import com.fitnessapp.tools.RedirectController;
 import com.fitnessapp.tools.SharedPreferencesHelper;
 import com.fitnessapp.user.User;
 import com.google.android.material.textfield.TextInputEditText;
 
 
 public class LoginActivity extends AppCompatActivity {
+    Context context = this;
+
     TextInputEditText fieldEmail, fieldPassword;
 
     Button loginButton, registrationButton, asGuestButton;
@@ -114,10 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (id >= 0){
                     SharedPreferencesHelper.setLogged((Activity)v.getContext(), true);
                     SharedPreferencesHelper.setId((Activity)v.getContext(), id);
-                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-                    intent.putExtra(User.class.getSimpleName(), user);
-                    startActivity(intent);
-                    finish();
+                    RedirectController.switchToAnotherActivity(context, ProfileActivity.class, true, user);
                 }
                 else{
                     Toast.makeText(LoginActivity.this, "Ошибка авторизации гостя!", Toast.LENGTH_LONG).show();
