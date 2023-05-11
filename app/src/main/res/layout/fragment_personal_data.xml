@@ -46,8 +46,14 @@
                     android:id="@+id/edFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:focusable="true"
+                    android:inputType="none"
+                    android:longClickable="false"
+                    android:maxLines="1"
+                    android:textIsSelectable="true" />
             </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -61,7 +67,12 @@
                     android:id="@+id/edEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:focusable="true"
+                    android:inputType="none"
+                    android:longClickable="false"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:textIsSelectable="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -76,7 +87,11 @@
                     android:id="@+id/edHeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:focusable="true"
+                    android:inputType="none"
+                    android:longClickable="false"
+                    android:maxLines="1"
+                    android:textIsSelectable="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -92,7 +107,11 @@
                     android:id="@+id/edExperience"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:focusable="true"
+                    android:inputType="none"
+                    android:longClickable="false"
+                    android:maxLines="1"
+                    android:textIsSelectable="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
@@ -114,7 +133,11 @@
                     android:id="@+id/edLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:focusable="true"
+                    android:inputType="none"
+                    android:longClickable="false"
+                    android:maxLines="1"
+                    android:textIsSelectable="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -130,7 +153,11 @@
                     android:id="@+id/edGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:focusable="true"
+                    android:inputType="none"
+                    android:longClickable="false"
+                    android:maxLines="1"
+                    android:textIsSelectable="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -145,7 +172,11 @@
                     android:id="@+id/edWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:focusable="true"
+                    android:inputType="none"
+                    android:longClickable="false"
+                    android:maxLines="1"
+                    android:textIsSelectable="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -160,7 +191,11 @@
                     android:id="@+id/edAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:focusable="true"
+                    android:inputType="none"
+                    android:longClickable="false"
+                    android:maxLines="1"
+                    android:textIsSelectable="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
