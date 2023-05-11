@@ -17,11 +17,15 @@
     <string name="change_personal_data">Изменить данные</string>
 
 
-
     <string name="change_password">Изменить пароль</string>
     <string name="new_password">Новый пароль</string>
     <string name="confirm_new_password">Подтвердите пароль</string>
 
 
+
+    <!-- API LINKS -->
+    <string name="api_server">http://10.0.2.2:8080</string>
+    <string name="authorization">users/login</string>
+    <string name="registration">users/register</string>
 
 </resources>
