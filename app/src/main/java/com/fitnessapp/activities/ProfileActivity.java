@@ -1,7 +1,9 @@
-package com.fitnessapp;
+package com.fitnessapp.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,14 +14,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.TextView;
 
+import com.fitnessapp.R;
 import com.fitnessapp.tools.DatabaseHelper;
 import com.fitnessapp.tools.RedirectController;
 import com.fitnessapp.tools.SharedPreferencesHelper;
 import com.fitnessapp.user.User;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -27,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView tvUsername;
     Button toWorkoutPlanButton, toWorkoutLogButton, logoutButton, toPersonalDataButton;
     MaterialCalendarView calendarView;
+
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     Cursor cursor;
@@ -48,6 +55,31 @@ public class ProfileActivity extends AppCompatActivity {
         toWorkoutLogButton = findViewById(R.id.toWorkoutLogButton);
         logoutButton = findViewById(R.id.logoutButton);
         calendarView = findViewById(R.id.workoutCalendar);
+
+        CalendarDay dateToDecorate = CalendarDay.today();
+
+        int colorToUse = ContextCompat.getColor(this, R.color.purple_700);
+
+
+        calendarView.addDecorator(new DayViewDecorator() {
+            @Override
+            public boolean shouldDecorate(CalendarDay day) {
+                return false;
+            }
+
+            @Override
+            public void decorate(DayViewFacade view) {
+
+            }
+        });
+
+
+        calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                RedirectController.switchToAnotherActivity(context, WorkoutLogActivity.class);
+            }
+        });
 
         tvUsername.setText(String.format("Привет, %s!", user.getFirstName()));
 

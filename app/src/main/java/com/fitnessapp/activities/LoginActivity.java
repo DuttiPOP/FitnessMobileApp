@@ -1,4 +1,4 @@
-package com.fitnessapp;
+package com.fitnessapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,11 +12,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.fitnessapp.R;
+import com.fitnessapp.api.ApiService;
+import com.fitnessapp.auth.AuthRequestBody;
 import com.fitnessapp.tools.DatabaseHelper;
 import com.fitnessapp.tools.RedirectController;
 import com.fitnessapp.tools.SharedPreferencesHelper;
 import com.fitnessapp.user.User;
 import com.google.android.material.textfield.TextInputEditText;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -28,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     Cursor cursor;
+    ApiService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,9 @@ public class LoginActivity extends AppCompatActivity {
         registrationButton = findViewById(R.id.registrationButton);
         asGuestButton = findViewById(R.id.asGuestButton);
 
+
+
+        apiService = new ApiService(context);
         databaseHelper = new DatabaseHelper(this);
 
         if (SharedPreferencesHelper.getLogged(this)){
@@ -60,31 +71,30 @@ public class LoginActivity extends AppCompatActivity {
                 String passwordString = fieldPassword.getText().toString();
 
 
-                /*
-                AuthRequestBody authbody = new AuthRequestBody();
-                authbody.setEmail(emailString);
-                authbody.setPassword(passwordString);
+                if (emailString.isEmpty()){
+                    fieldEmail.setError("Email field is empty!");
+                    return;
+                }
+
+                if (passwordString.isEmpty()){
+                    fieldPassword.setError("Password field is empty!");
+                    return;
+                }
 
 
-                Call<ResponseBody> response = RetrofitClient
-                        .auth("http://localhost:8080/")
-                        .create(ApiService.class)
-                        .auth(authbody);
+                AuthRequestBody authbody = new AuthRequestBody(emailString, passwordString);
 
-                response.enqueue(new Callback<ResponseBody>() {
+
+
+                apiService.loginUser(authbody).enqueue(new Callback<User>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    public void onResponse(Call<User> call, Response<User> response) {
                         if (response.isSuccessful()) {
-                            String jsonResponse = response.body().toString();
-                            Gson gson = new Gson();
-                            JsonElement jsonElement = new JsonParser().parse(jsonResponse);
-                            if (jsonElement.getAsJsonObject().has("email")) {
-                                User user = gson.fromJson(jsonResponse, User.class);
-                                saveUserData(user.getName(), user.getAge(), user.getEmail());
-                                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
+                            User user = response.body();
+                            int id = databaseHelper.saveUser(user);
+                            SharedPreferencesHelper.setId((Activity)context, id);
+                            SharedPreferencesHelper.setLogged((Activity) context, true);
+                            RedirectController.switchToAnotherActivity(context, ProfileActivity.class, true, user);
                         }
                         else {
                             Toast.makeText(LoginActivity.this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
@@ -92,10 +102,11 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(LoginActivity.this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
                     }
 
-                });*/
+                });
 
             }
         });

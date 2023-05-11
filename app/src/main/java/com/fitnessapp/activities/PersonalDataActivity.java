@@ -1,8 +1,10 @@
-package com.fitnessapp;
+package com.fitnessapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.fitnessapp.R;
+import com.fitnessapp.user.User;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class PersonalDataActivity extends AppCompatActivity {
@@ -22,6 +26,10 @@ public class PersonalDataActivity extends AppCompatActivity {
     TextInputEditText edPassword, edNewPassword, edConfirmNewPassword;
     Button btChangePassword;
 
+    Bundle arguments;
+    User user;
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +49,19 @@ public class PersonalDataActivity extends AppCompatActivity {
         edNewPassword = findViewById(R.id.edNewPassword);
         edConfirmNewPassword = findViewById(R.id.edConfirmNewPassword);
         btChangePassword = findViewById(R.id.btChangePassword);
+
+        arguments = getIntent().getExtras();
+        user = arguments.getParcelable(User.class.getSimpleName());
+
+        edFirstName.setText(user.getFirstName());
+        edAge.setText(Integer.toString(user.getAge()));
+        edEmail.setText(user.getEmail());
+        edLastName.setText(user.getLastName());
+        edExperience.setText(Integer.toString(user.getExperience()));
+        edWeight.setText(Double.toString(user.getWeight()));
+        edHeight.setText(Double.toString(user.getHeight()));
+        edGender.setText(user.getGender());
+
 
 
         btChangePassword.setOnClickListener(new View.OnClickListener() {

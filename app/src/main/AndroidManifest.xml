@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,26 +13,26 @@
         android:theme="@style/Theme.FitnessMobileApp"
         tools:targetApi="31">
         <activity
-            android:name=".PersonalDataActivity"
+            android:name=".activities.PersonalDataActivity"
             android:theme="@style/Theme.FitnessMobileApp"
             android:exported="false" />
         <activity
-            android:name=".GoalsActivity"
+            android:name=".activities.GoalsActivity"
             android:theme="@style/Theme.FitnessMobileApp" />
         <activity
-            android:name=".WorkoutPlanActivity"
+            android:name=".activities.WorkoutPlanActivity"
             android:theme="@style/Theme.FitnessMobileApp" />
         <activity
-            android:name=".WorkoutLogActivity"
+            android:name=".activities.WorkoutLogActivity"
             android:theme="@style/Theme.FitnessMobileApp" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activities.RegisterActivity"
             android:theme="@style/Theme.FitnessMobileApp" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activities.ProfileActivity"
             android:theme="@style/Theme.FitnessMobileApp" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true"
             android:label="@string/app_nick"
             android:theme="@style/Theme.FitnessMobileApp">
